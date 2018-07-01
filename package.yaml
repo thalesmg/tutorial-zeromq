@@ -1,0 +1,28 @@
+name:                tutorial-zeromq
+version:             0.1.0.0
+#synopsis:
+#description:
+homepage:            https://github.com/githubuser/tutorial-zeromq#readme
+license:             BSD3
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2018 Author name here
+category:            Web
+extra-source-files:
+  - README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - zeromq4-haskell
+  - bytestring
+
+default-extensions:
+  - OverloadedStrings
+
+executables:
+  req-rep-hello:
+    source-dirs:      src
+    main:             req_rep.hs
+  req-rep-client:
+    source-dirs: src
+    main: req_rep_client.hs
