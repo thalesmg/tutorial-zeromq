@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9921130508bb7c005a7c45f5f352aa09fabaabd54b6a46e7a5abdceb4b42bd1e
+-- hash: 214f4c42a2435ca08350432b9ea812b8aa8d707a5292b18eabfa5f4273c04d13
 
 name:           tutorial-zeromq
 version:        0.1.0.0
@@ -18,6 +18,48 @@ cabal-version:  >= 1.10
 extra-source-files:
     README.md
 
+executable pub-sub-x-proxy
+  main-is: pub_sub_x_proxy.hs
+  other-modules:
+      Main
+      Paths_tutorial_zeromq
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedStrings
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , zeromq4-haskell
+  default-language: Haskell2010
+
+executable pub-sub-x-publisher
+  main-is: pub_sub_x_publisher.hs
+  other-modules:
+      Main
+      Paths_tutorial_zeromq
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedStrings
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , zeromq4-haskell
+  default-language: Haskell2010
+
+executable pub-sub-x-subscriber
+  main-is: pub_sub_x_subscriber.hs
+  other-modules:
+      Main
+      Paths_tutorial_zeromq
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedStrings
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , zeromq4-haskell
+  default-language: Haskell2010
+
 executable req-rep-client
   main-is: req_rep_client.hs
   other-modules:
@@ -32,8 +74,8 @@ executable req-rep-client
     , zeromq4-haskell
   default-language: Haskell2010
 
-executable req-rep-hello
-  main-is: req_rep.hs
+executable req-rep-server
+  main-is: req_rep_server.hs
   other-modules:
       Main
       Paths_tutorial_zeromq

@@ -9,7 +9,8 @@ import System.ZMQ4.Monadic
 main :: IO ()
 main = runZMQ $ do
   responder <- socket Rep
-  bind responder "tcp://*:5555"
+  -- bind responder "tcp://*:5555"
+  bind responder "ipc://boom"
   forever $ do
     buffer <- receive responder
     liftIO $ do

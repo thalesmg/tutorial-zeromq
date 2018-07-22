@@ -20,9 +20,18 @@ default-extensions:
   - OverloadedStrings
 
 executables:
-  req-rep-hello:
-    source-dirs:      src
-    main:             req_rep.hs
+  req-rep-server:
+    source-dirs: src
+    main: req_rep_server.hs
   req-rep-client:
     source-dirs: src
     main: req_rep_client.hs
+  pub-sub-x-publisher:
+    source-dirs: src
+    main: pub_sub_x_publisher.hs
+  pub-sub-x-subscriber:
+    source-dirs: src
+    main: pub_sub_x_subscriber.hs
+  pub-sub-x-proxy:
+    source-dirs: src
+    main: pub_sub_x_proxy.hs
