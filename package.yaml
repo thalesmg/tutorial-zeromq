@@ -35,3 +35,12 @@ executables:
   pub-sub-x-proxy:
     source-dirs: src
     main: pub_sub_x_proxy.hs
+  req-rep-broker-client:
+    source-dirs: src
+    main: req_rep_broker_client.hs
+  req-rep-broker-worker:
+    source-dirs: src
+    main: req_rep_broker_worker.hs
+  req-rep-broker-broker:
+    source-dirs: src
+    main: req_rep_broker_broker.hs
