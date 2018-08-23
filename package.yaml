@@ -15,6 +15,8 @@ dependencies:
   - base >= 4.7 && < 5
   - zeromq4-haskell
   - bytestring
+  - random
+  - time
 
 default-extensions:
   - OverloadedStrings
@@ -44,3 +46,6 @@ executables:
   req-rep-broker-broker:
     source-dirs: src
     main: req_rep_broker_broker.hs
+  peering1:
+    source-dirs: src/cluster-simulation
+    main: peering1.hs
