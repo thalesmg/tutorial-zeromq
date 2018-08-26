@@ -49,3 +49,6 @@ executables:
   peering1:
     source-dirs: src/cluster-simulation
     main: peering1.hs
+  peering2:
+    source-dirs: src/cluster-simulation
+    main: peering2.hs

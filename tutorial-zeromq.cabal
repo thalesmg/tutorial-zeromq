@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5d79c4811b78d9f48ccbfe5da91bf36ae1cd3a715c461ac92c8d094d994315ef
+-- hash: 95786460f0181f8fa2039881c0082efbb19f2b87a4521d0ee26296d6c38b0699
 
 name:           tutorial-zeromq
 version:        0.1.0.0
@@ -20,6 +20,21 @@ extra-source-files:
 
 executable peering1
   main-is: peering1.hs
+  other-modules:
+      Paths_tutorial_zeromq
+  hs-source-dirs:
+      src/cluster-simulation
+  default-extensions: OverloadedStrings
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , random
+    , time
+    , zeromq4-haskell
+  default-language: Haskell2010
+
+executable peering2
+  main-is: peering2.hs
   other-modules:
       Paths_tutorial_zeromq
   hs-source-dirs:
