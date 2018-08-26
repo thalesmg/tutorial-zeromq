@@ -1,19 +1,19 @@
+{-# LANGUAGE LambdaCase        #-}
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE LambdaCase #-}
 
 module Main where
 
-import Control.Monad
-import Data.ByteString.Char8 as C8
-import Data.List.NonEmpty
-import System.ZMQ4.Monadic
-import System.Environment
-import System.Random
-import Text.Printf
+import           Control.Monad
+import           Data.ByteString.Char8 as C8
+import           Data.List.NonEmpty
+import           System.Environment
+import           System.Random
+import           System.ZMQ4.Monadic
+import           Text.Printf
 
 main :: IO ()
 main = do
-  self : others <- getArgs
+  self:others <- getArgs
   print (self : others)
   printf "I: preparando broker em %s...\n" self
   runZMQ $ do
@@ -28,22 +28,20 @@ main = do
           Sock
             statefe
             [In]
-            (Just (\case
-                      [In] -> do
-                        [peer_name, available] <- receiveMulti statefe
-                        liftIO $ printf "%s - %s trabalhadores livres\n" (show peer_name) (show available)
-
-                      [] -> do
-                        x <- liftIO $ (randomRIO (1, 10) :: IO Int)
-                        sendMulti statebe (fromList [C8.pack self, C8.pack $ show x])
-
-                      _ ->
-                        liftIO $ Prelude.putStrLn "taporra"
-                     ))
+            (Just
+               (\case
+                  [In] -> do
+                    [peer_name, available] <- receiveMulti statefe
+                    liftIO $
+                      printf
+                        "%s - %s trabalhadores livres\n"
+                        (show peer_name)
+                        (show available)
+                  [] -> error "never called"))
     forever $ do
       evts <- poll 1000 [pStateFE]
       case evts of
         [[]] -> do
-          x <- liftIO $ (randomRIO (1, 10) :: IO Int)
+          x <- liftIO (randomRIO (1, 10) :: IO Int)
           sendMulti statebe (fromList [C8.pack self, C8.pack $ show x])
         _ -> pure ()
